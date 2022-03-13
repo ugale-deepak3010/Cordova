@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  padding: 0;
+  counter-reset: choice -1 bit0 -1 bit1_1 -2 bit1_2 -1 bit2_1 -4 bit2_2 -3 bit2_3 -2 bit2_4 -1
+    bit3_1 7 bit3_2 23 bit3_3 39 bit3_4 55 bit4_1 15 bit4_2 47 bit5 31 answer 0;
+  font-family: sans-serif;
+}
+input {
+  position: absolute;
+  left: -999px;
+}
+label {
+  position: absolute;
+  width: 13.5vw;
+  height: 3vw;
+  left: 50.5vw;
+  top: 8vw;
+  padding-top: 1000px;
+  padding: 2vw;
+  background: #00ff00;
+  border-radius: 1vw;
+  font-size: 4vw;
+  font-weight: bold;
+  line-height: 3vw;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+}
+label:hover {
+  background: #006600;
+}
+label::before {
+  content: "Yes";
+}
+[for$="_0"] {
+  left: 32vw;
+  background: #ff0000;
+}
+[for$="_0"]:hover {
+  background: #660000;
+}
+[for$="_0"]::before {
+  content: "No";
+}
+[for="chosen"] {
+  width: 32vw;
+  left: 32vw;
+  display: block;
+}
+[for="chosen"]::before {
+  content: "Continue";
+}
+ol {
+  list-style: none;
+  float: left;
+  position: absolute;
+  width: 64vw;
+  height: auto;
+  left: 16vw;
+  top: 16vw;
+  margin: 0;
+  padding: 2vw;
+  background: white;
+  border-radius: 1vw;
+  box-shadow: black 0 1vw 1vw;
+  display: none;
+}
+ol::before {
+  content: " Your number in here ??";
+  top: -14vw;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  left: 0;
+  font-size: 3vw;
+  line-height: 4vw;
+  color: white;
+} 
+
+.choice {
+  height: auto;
+}
+.choice::before {
+  content: "Please Choose any Number and set Your mind \a \a \a";
+  text-shadow: 0 0 3px #b3b3cc;
+}
+li {
+  float: left;
+  width: 8vw;
+  height: 6vw;
+  font-size: 4.5vw;
+  line-height: 2vw;
+  font-weight: bold;
+  text-align: center;
+}
+.choice li::before {
+  counter-increment: choice;
+  content: counter(choice);
+}
+.bit0 li::before {
+  counter-increment: bit0 2;
+  content: counter(bit0);
+}
+.bit1 li:nth-child(2n+1)::before {
+  counter-increment: bit1_1 4;
+  content: counter(bit1_1);
+}
+.bit1 li:nth-child(2n+2)::before {
+  counter-increment: bit1_2 4;
+  content: counter(bit1_2);
+}
+.bit2 li:nth-child(4n+1)::before {
+  counter-increment: bit2_1 8;
+  content: counter(bit2_1);
+}
+.bit2 li:nth-child(4n+2)::before {
+  counter-increment: bit2_2 8;
+  content: counter(bit2_2);
+}
+.bit2 li:nth-child(4n+3)::before {
+  counter-increment: bit2_3 8;
+  content: counter(bit2_3);
+}
+.bit2 li:nth-child(4n+4)::before {
+  counter-increment: bit2_4 8;
+  content: counter(bit2_4);
+}
+.bit3 li:nth-child(n+1):nth-child(-n+8)::before {
+  counter-increment: bit3_1;
+  content: counter(bit3_1);
+}
+.bit3 li:nth-child(n+9):nth-child(-n+16)::before {
+  counter-increment: bit3_2;
+  content: counter(bit3_2);
+}
+.bit3 li:nth-child(n+17):nth-child(-n+24)::before {
+  counter-increment: bit3_3;
+  content: counter(bit3_3);
+}
+.bit3 li:nth-child(n+25):nth-child(-n+32)::before {
+  counter-increment: bit3_4;
+  content: counter(bit3_4);
+}
+.bit4 li:nth-child(n+1):nth-child(-n+16)::before {
+  counter-increment: bit4_1;
+  content: counter(bit4_1);
+}
+.bit4 li:nth-child(n+17):nth-child(-n+32)::before {
+  counter-increment: bit4_2;
+  content: counter(bit4_2);
+}
+.bit5 li::before {
+  counter-increment: bit5;
+  content: counter(bit5);
+}
+.answer {
+  position: absolute;
+  width: 10vw;
+  height: 8vw;
+  left: 45vw;
+  top: 7vw;
+  margin: 0;
+  padding: 0;
+  font-size: 5vw;
+  line-height: 8vw;
+  font-weight: bold;
+  text-align: center;
+  background: white;
+  border-radius: 1vw;
+  box-shadow: black 0 1vw 1vw;
+  display: none;
+}
+[name="bit5"]:checked ~ .answer {
+  display: block;
+}
+.choice,
+[id="chosen"]:checked ~ .bit0,
+[id="chosen"]:checked ~ [for^="bit0_"],
+[name="bit0"]:checked ~ .bit1,
+[name="bit0"]:checked ~ [for^="bit1_"],
+[name="bit1"]:checked ~ .bit2,
+[name="bit1"]:checked ~ [for^="bit2_"],
+[name="bit2"]:checked ~ .bit3,
+[name="bit2"]:checked ~ [for^="bit3_"],
+[name="bit3"]:checked ~ .bit4,
+[name="bit3"]:checked ~ [for^="bit4_"],
+[name="bit4"]:checked ~ .bit5,
+[name="bit4"]:checked ~ [for^="bit5_"],
+[name="bit5"]:checked ~ [for="reset"] {
+  display: block;
+}
+#chosen:checked ~ .choice,
+#chosen:checked ~ [for="chosen"],
+[name="bit0"]:checked ~ .bit0,
+[name="bit0"]:checked ~ [for^="bit0_"],
+[name="bit1"]:checked ~ .bit1,
+[name="bit1"]:checked ~ [for^="bit1_"],
+[name="bit2"]:checked ~ .bit2,
+[name="bit2"]:checked ~ [for^="bit2_"],
+[name="bit3"]:checked ~ .bit3,
+[name="bit3"]:checked ~ [for^="bit3_"],
+[name="bit4"]:checked ~ .bit4,
+[name="bit4"]:checked ~ [for^="bit4_"],
+[name="bit5"]:checked ~ .bit5,
+[name="bit5"]:checked ~ [for^="bit5_"] {
+  display: none;
+}
+#bit0_1:checked {
+  counter-increment: answer 1;
+}
+#bit1_1:checked {
+  counter-increment: answer 2;
+}
+#bit2_1:checked {
+  counter-increment: answer 4;
+}
+#bit3_1:checked {
+  counter-increment: answer 8;
+}
+#bit4_1:checked {
+  counter-increment: answer 16;
+}
+#bit5_1:checked {
+  counter-increment: answer 32;
+}
+.answer::before {
+  content: "Your number was...";
+  position: absolute;
+  width: 30vw;
+  height: 3vw;
+  left: -9vw;
+  top: -6vw;
+  font-size: 3vw;
+  line-height: 3vw;
+  color: white;
+}
+.answer::after {
+  content: counter(answer);
+}
+[for="reset"] {
+  display: none;
+  left: 41vw;
+  top: 18vw;
+}
+[for="reset"]::before {
+  content: "Restart";
+}
